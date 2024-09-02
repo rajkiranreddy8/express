@@ -61,7 +61,7 @@ app.post('/movies/', async (request, response) => {
 
 app.get('/movies/:movieId', async (request, response) => {
   const {movieId} = request.params
-  const movieNameById = `select * from movie where movie_id = '${movieId}' ; `
+  const movieNameById = `select * from movie where movie_id = ${movieId} ; `
   const movie = await db.get(movieNameById) // database object need to be converted to response object
   response.send(convertDbObjectToResponseObject(movie))
 })
